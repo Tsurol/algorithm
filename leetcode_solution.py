@@ -32,14 +32,10 @@ class Solution(object):
 
     @staticmethod
     def two_sum_hash(nums: List[int], target: int) -> List[int]:
+        # 查找表法，时间复杂度为O(N)
         hashtable = dict()
         for i, num in enumerate(nums):
             if target - num in hashtable:
                 return [hashtable[target - num], i]
-            hashtable[nums[i]] = i
-        return []
-
-
-if __name__ == '__main__':
-    res = Solution().two_sum_hash(nums=[2, 7, 11, 15], target=13)
-    print(res)
+            hashtable[num] = i
+        raise ei.TipException('No two sum solution')
