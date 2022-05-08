@@ -5,6 +5,15 @@ import error_info as ei
 
 
 class Solution(object):
+    SYMBOL_VALUES = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    }
 
     def __init__(self):
         pass
@@ -33,3 +42,17 @@ class Solution(object):
     def is_palindrome(x: int) -> bool:
         """回文数"""
         return str(x) == str(x)[::-1]
+
+    @staticmethod
+    def roman_to_int(s: str) -> int:
+        """罗马数字转整数"""
+        symbol_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        answer = 0
+        n = len(s)
+        for i, v in enumerate(s):
+            value = symbol_values[v]
+            if i < n - 1 and value < symbol_values[s[i + 1]]:
+                answer -= value
+            else:
+                answer += value
+        return answer
