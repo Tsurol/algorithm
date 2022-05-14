@@ -46,3 +46,15 @@ class Solution(object):
             else:
                 answer += value
         return answer
+
+    @staticmethod
+    def longest_common_prefix(strs: List[str]) -> str:
+        """最长公共前缀"""
+        result = ""
+        for tmp in zip(*strs):
+            tmp_set = set(tmp)
+            if len(tmp_set) == 1:
+                result += tmp[0]
+            else:
+                break
+        return result
