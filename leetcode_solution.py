@@ -58,3 +58,18 @@ class Solution(object):
             else:
                 break
         return result
+
+    @staticmethod
+    def bracket_valid(s: str) -> bool:
+        """有效的括号 先进后出用栈"""
+        # 有效字符串的长度一定为偶数
+        if len(s) % 2 == 1:
+            return False
+        hashmap = {'{': '}', '[': ']', '(': ')'}
+        stack = []
+        for char in s:
+            if char in hashmap:
+                stack.append(char)
+            elif not stack or hashmap[stack.pop()] != char:
+                return False
+        return not stack
